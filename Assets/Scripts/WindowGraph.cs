@@ -37,8 +37,10 @@ public class WindowGraph : MonoBehaviour
         startYScaleAtZero = true;
         yLabelList = new List<RectTransform>();
         GraphContainer = graphContainer;
+        //Set x and y label
         LabelTemplateX = GraphContainer.Find("LabelTemplateX").GetComponent<RectTransform>();
         LabelTemplateY = GraphContainer.Find("LabelTemplateY").GetComponent<RectTransform>();
+        //Adds dashes
         DashTemplateX = GraphContainer.Find("DashTemplateY").GetComponent<RectTransform>();
         DashTemplateY = GraphContainer.Find("DashTemplateX").GetComponent<RectTransform>();
         GraphVisual = graphVisual;
@@ -67,7 +69,7 @@ public class WindowGraph : MonoBehaviour
         // Deal with null optional inputs.
         if (getAxisLabelX == null)
         {
-            getAxisLabelX = delegate(int _i) { return _i.ToString();};
+            getAxisLabelX = delegate (int _i) { return _i.ToString(); };
         }
         if (getAxisLabelY == null)
         {
@@ -96,7 +98,7 @@ public class WindowGraph : MonoBehaviour
         float yMinimum, yMaximum;
         CalculateYScale(out yMinimum, out yMaximum);
         xSize = graphWidth / (maxVisibleValueAmount + 1); // Distance between consecutive points on xAxis of our graph (resolution).
-        
+
         // Iterate along the list (for accessing each point coordinates). 
         int xIndex = 0;
         for (int i = Mathf.Max(valueList.Count - maxVisibleValueAmount, 0); i < valueList.Count; i++)
